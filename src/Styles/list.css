@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 20px;
+    padding: 0;
+}
+
+.amount {
+  font-size: 25px;
+    text-align: center;
+    font-family: 'Montserrat';
+}
+
+body {
+    background-color: white;
+    font-family: 'Montserrat'
+}
+
+.books-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    width: 100%; 
+    margin-top: 20px; 
+  }
+
+  .books2 {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    width: 100%; 
+    margin-top: 20px; 
+  }
+  
+  .book {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    width: 350px;
+    height: 500px;
+    gap: 10px;
+  }
+  
+  .book h1 {
+    font-size: 1.2rem;
+  }
+  
+  .book p {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+p {
+    font-weight:bold;
+}
+
+.input {
+    width: 400px;
+    height: 40px;
+    border-radius: 2rem;
+    font-size: 27px;
+    font-family: 'Montserrat';
+    text-align: center;
+}
+
+.input :active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+.btn {
+    background-color: white;
+    color: black;
+
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Montserrat';
+  border-radius: 20px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  height: 40px;
+}
+.btn:hover {
+    background-color: #C0C0C0;
+}
+.input:hover {
+    background-color: #C0C0C0;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+}
