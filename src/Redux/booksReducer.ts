@@ -8,6 +8,7 @@ import {
   BooksTypes,
   Book,
   FetchOneBook,
+  SET_BOOK_SUCCSES,
 } from "../types/types";
 
 export interface BooksState {
@@ -55,6 +56,8 @@ export const booksReducer = (
       return { ...state, filter: action.payload };
     case SET_BOOK: 
       return {...state, oneBook: action.payload.book}
+    case SET_BOOK_SUCCSES: 
+      return {...state, loading: false}
     default:
       return state;
   }

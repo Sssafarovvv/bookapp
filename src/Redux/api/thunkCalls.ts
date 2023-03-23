@@ -7,6 +7,7 @@ import {
   BooksTypes,
   Book,
   SET_BOOK,
+  SET_BOOK_SUCCSES,
 } from "../../types/types";
 import { Dispatch } from "redux";
 import { setCurrentPage } from "../../types/types";
@@ -74,14 +75,23 @@ export const fetchBooks = (
           orderBy: selectedSortOption,
         },
       });
-      const books: Book[] = response.data.items.map((item: any) => ({
-        id: item.id,
-        title: item.volumeInfo.title,
-        author: item.volumeInfo.authors?.join(", ") || "",
-        genre: item.volumeInfo.categories?.join(", ") || "",
-        thumbnail: item.volumeInfo.imageLinks?.thumbnail || "",
-        publishedDate: item.volumeInfo.publishedDate || "",
-      }));
+      const books: Book[] = [];
+      const bookTitles: Set<string> = new Set();
+      response.data.items.forEach((item: any) => {
+        const title = item.volumeInfo.title;
+        if (!bookTitles.has(title)) {
+          bookTitles.add(title);
+          const book: Book = {
+            id: item.id,
+            title: title,
+            author: item.volumeInfo.authors?.join(", ") || "",
+            genre: item.volumeInfo.categories?.join(", ") || "",
+            thumbnail: item.volumeInfo.imageLinks?.thumbnail || "",
+            publishedDate: item.volumeInfo.publishedDate || "",
+          };
+          books.push(book);
+        }
+      });
       const totalItems = response.data.totalItems;
       dispatch({ type: FETCH_BOOKS_SUCCESS, payload: { books, totalItems } });
       console.log(response);
@@ -113,6 +123,7 @@ export const fetchCard = (
         publishedDate: response.data.volumeInfo.publishedDate || "",
     };
       dispatch({type: SET_BOOK, payload: {book}})
+      dispatch({ type: SET_BOOK_SUCCSES });
       console.log(response, book +'asdsad');
     } catch (error) {
       dispatch({ type: FETCH_BOOKS_FAILURE, payload: alert("Ошибка или пустой запрос") });

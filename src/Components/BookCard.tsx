@@ -14,6 +14,7 @@ const BookCard: React.FC = () => {
   console.log(id)
 
   const book = useAppSelector((state) => state.booksReducer.oneBook);
+  const loading = useAppSelector((state) => state.booksReducer.loading);
 
   useEffect(() => {
     if (id) {
@@ -22,6 +23,8 @@ const BookCard: React.FC = () => {
   }, []);
 
   return (
+    <>
+    {loading ? <div className="main">Загрузка...</div> : null}
     <div className="book-card">
       <h1>{book?.title}</h1> <h2>{book?.author}</h2>
       <p>{book?.genre}</p>
@@ -41,6 +44,7 @@ const BookCard: React.FC = () => {
     </div>
     <GoBackButton/>
     </div>
+    </>
   );
 };
 

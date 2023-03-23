@@ -7,6 +7,7 @@ export const FETCH_BOOKS_FAILURE = "FETCH_BOOKS_FAILURE";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 export const SET_FILTER = "SET_FILTER";
 export const SET_BOOK = "SET_BOOK"
+export const SET_BOOK_SUCCSES = "SET_BOOK_SUCCSES"
 
 export interface FilterProps {
   selectedOption: string | undefined;
@@ -66,6 +67,10 @@ export interface SetFilterAction {
   payload: string;
 }
 
+export interface SetSuccsesBook {
+  type: typeof SET_BOOK_SUCCSES;
+}
+
 export type BooksTypes =
   | FetchBooksRequestAction
   | FetchBooksSuccessAction
@@ -73,6 +78,7 @@ export type BooksTypes =
   | SetCurrentPageAction
   | SetFilterAction
   | FetchOneBook
+  | SetSuccsesBook
 
 export type DispatchType = Dispatch<BooksTypes>;
 
@@ -80,6 +86,7 @@ export const setCurrentPage = (page: number): SetCurrentPageAction => ({
   type: SET_CURRENT_PAGE,
   payload: page,
 });
+
 
 export const setFilter = (filter: string): SetFilterAction => ({
   type: SET_FILTER,

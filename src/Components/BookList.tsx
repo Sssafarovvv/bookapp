@@ -30,9 +30,7 @@ const BooksList: React.FC = () => {
   };
 
   const handleFetchMoreBooks: HandleFetchMoreBooks = (event) => {
-    dispatch({ type: FETCH_BOOKS_REQUEST });
     dispatch(loadMoreBooks(currentPage, filter, selectedSortOption));
-    dispatch({ type: FETCH_BOOKS_SUCCESS });
   };
 
   const handleFilterChange: HandleFilterChange = (
@@ -86,6 +84,9 @@ const BooksList: React.FC = () => {
         selectedSortOption={selectedSortOption}
         handleSetCategory={handleSetCategory}
       />
+
+      {loading ? <h2 className="main">Загрузка...</h2> : null}
+
       {category.length > 1 ? (
         <div className="main">
           <div className="books2">
@@ -108,9 +109,7 @@ const BooksList: React.FC = () => {
         </p>
       )}
 
-      {loading ? (
-        <div className="main">Загрузка...</div>
-      ) : (
+      {
         totalItems > 1 && (
           <div className="books-container">
             {books.map((book) => (
@@ -126,7 +125,7 @@ const BooksList: React.FC = () => {
             ))}
           </div>
         )
-      )}
+      }
 
       {totalItems > 1 && (
         <div className="container">
@@ -135,6 +134,7 @@ const BooksList: React.FC = () => {
           </button>
         </div>
       )}
+      {loading ? <div className="main">Загрузка...</div> : null}
     </form>
   );
 };
