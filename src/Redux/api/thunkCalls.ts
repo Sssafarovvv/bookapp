@@ -26,7 +26,7 @@ export const loadMoreBooks = (
   return async (dispatch: DispatchType, getState: getStateType) => {
     dispatch({ type: FETCH_BOOKS_REQUEST });
     try {
-      const startIndex = (page - 1) * 30;
+      const startIndex = (page + 1) * 30;
       const response = await googleBooksApi.get("/volumes", {
         params: {
           q: filter,

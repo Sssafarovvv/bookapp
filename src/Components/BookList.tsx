@@ -12,7 +12,6 @@ import { Book } from "../types/types";
 import Filter from "./Filter";
 import { Link } from "react-router-dom";
 import "../Styles/list.css";
-import { FETCH_BOOKS_REQUEST, FETCH_BOOKS_SUCCESS } from "../types/types";
 
 const BooksList: React.FC = () => {
   const dispatch = useAppDispatch();

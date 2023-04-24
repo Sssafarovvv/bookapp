@@ -20,7 +20,7 @@ const BookCard: React.FC = () => {
     if (id) {
       dispatch(fetchCard(id));
     } else console.log("net zaprosa");
-  }, []);
+  }, [id, dispatch]);
 
   return (
     <>
